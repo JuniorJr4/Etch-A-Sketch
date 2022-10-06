@@ -1,0 +1,35 @@
+* {
+    border: 1px dotted red;
+    box-sizing: border-box;
+    font-family: 'Roboto';
+}
+
+.grid-container {
+    display: grid;
+    width: 500px;
+    height: 500px;
+}
+
+.grid-container > div {
+    border: 1px solid lightcoral;
+    border-radius: 2px;
+  }
+
+  .hero {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .mid {
+    display: flex;
+    align-items: center;
+  }
+
+  .size {
+    font-weight: bold;
+    border-radius: 1px;
+    height: 40px;
+    width: 100px;
+  }
