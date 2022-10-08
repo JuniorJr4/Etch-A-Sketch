@@ -13,15 +13,22 @@
 <body>
     <div class="hero">
         <h1 class="headline">Etch-A-Sketch</h1>
-        <h2 class="how">Move mouse over squares to create you masterpiece!</h2>
+        <h2 class="how">Move mouse over squares to create your masterpiece!</h2>
         <div class="mid">
             <div class="side-buttons">
-                <button class="basicBtn active">Basic</button>
-                <button class="rainbowBtn">Rainbow Style</button>
-                <button class="opacityBtn">Opacity Style</button>
+                <button class="basicBtn active">Classic</button>
+                <button class="rainbowBtn">Far Out!</button>
+                <button class="opacityBtn">Fade to Black</button>
                 <button class="size" onclick="reSizeGrid()">Click here to change size</button>
+                <button class="resetBtn">Reset Grid</button>
             </div>
-            <div class="grid-container">
+            <div class="center">
+                <div class="grid-container">
+                </div>
+                <div class="slider-container">
+                    <p>Grid Size: <span id="current-size"></span></p>
+                    <input type="range" min="1" max="64" value="8" class="slider">
+                </div>
             </div>
         </div>
     </div>
