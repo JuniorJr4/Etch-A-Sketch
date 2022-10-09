@@ -1,44 +1,80 @@
 * {
-    border: 1px dotted red;
-    box-sizing: border-box;
-    font-family: 'Roboto';
+  box-sizing: border-box;
+  font-family: 'Roboto';
 }
 
 .grid-container {
-    display: grid;
-    width: 500px;
-    height: 500px;
+  display: grid;
+  width: 500px;
+  height: 500px;
+  background-color: white;
+  border-collapse: collapse;
+  grid-gap: 1px;
 }
 
-.grid-container > div {
-    border: 1px solid lightcoral;
-    border-radius: 2px;
-  }
-
-  .hero {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-  }
+.grid-container>div {
+  outline: 1px solid rgb(255, 164, 164);
+  border-radius: 1px;
   
-  .mid {
-    display: flex;
-    align-items: center;
-  }
+}
 
-  button {
-    font-weight: bold;
-    border-radius: 1px;
-    height: 40px;
-    width: 100px;
-  }
+.hero {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: rgb(230, 230, 230);
+}
 
-  .side-buttons {
-    display: flex;
-    flex-direction: column;
-  }
+.mid {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
 
-  button.active {
-    background-color: darkslategray;
-  }
+button {
+  font-weight: bold;
+  border-radius: 10px;
+  height: 40px;
+  width: 100px;
+  transition: 0.3s;
+}
+button:hover {
+  background-color: darkslategray;
+}
+
+.side-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 70px;
+}
+
+button.active {
+  background-color: darkslategray;
+}
+
+p {
+  font-weight: bold;
+}
+
+.center {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.slider {
+  accent-color: grey;
+}
+
+.select-color {
+  appearance: none;
+  border-width: 0;
+  height: 50px;
+}
+
+.headline {
+  margin-left: 120px;
+}
