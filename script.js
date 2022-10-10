@@ -1,10 +1,8 @@
-const DEFAULT_GRID_SIZE = 8;
-const DEFAULT_COLOR = 'black';
-const DEFAULT_COLOR_MODE = 'basic';
+// Set initial conditions
+let activeColorMode = 'basic';
+let currentColor = 'black';
 
-let activeColorMode = DEFAULT_COLOR_MODE;
-let currentColor = DEFAULT_COLOR;
-
+//Get DOM elements
 const gridContainer = document.querySelector('.grid-container');
 const selectColor = document.querySelector('.select-color');
 const basicBtn = document.querySelector('.basicBtn')
@@ -13,21 +11,22 @@ const opacityBtn = document.querySelector('.opacityBtn');
 const eraserBtn = document.querySelector('.eraserBtn');
 const resetBtn = document.querySelector('.resetBtn');
 const slider = document.querySelector(".slider");
-const gridSize = document.querySelector("#current-size");
-gridSize.textContent = slider.value + ' X ' + slider.value;
+const gridSize = document.querySelector('#current-size');
 
-selectColor.oninput = (e) => changeColor(e.target.value);
-basicBtn.onclick = () => setActiveColorMode('basic');
-opacityBtn.onclick = () => setActiveColorMode('opacity');
-rainbowBtn.onclick = () => setActiveColorMode('rainbow');
-eraserBtn.onclick = () => setActiveColorMode('eraser');
-resetBtn.onclick = () => resetGrid();
-slider.onmousemove = (e) => showSize(e.target.value);
-slider.onchange = function () {
+//Assign event listeners
+selectColor.addEventListener('input', (e) => { changeColor(e.target.value); });
+basicBtn.addEventListener('click', () => { setActiveColorMode('basic'); });
+opacityBtn.addEventListener('click', () => { setActiveColorMode('opacity'); });
+rainbowBtn.addEventListener('click', () => { setActiveColorMode('rainbow'); });
+eraserBtn.addEventListener('click', () => { setActiveColorMode('eraser'); });
+resetBtn.addEventListener('click', resetGrid);
+slider.addEventListener('mousemove', (e) => { showSize(e.target.value); });
+slider.addEventListener('change', (e) => {
     removeGrid();
-    makeGrid(this.value);
-}
+    makeGrid(e.target.value);
+});
 
+//Create functions
 function showSize(value) {
     gridSize.textContent = `${value} X ${value}`;
 }
@@ -56,10 +55,6 @@ function makeGrid(x) {
     }
 }
 
-makeGrid(DEFAULT_GRID_SIZE);
-
-
-
 function changeColorMode(newMode) {
     basicBtn.classList.remove('active');
     rainbowBtn.classList.remove('active');
@@ -82,12 +77,14 @@ function changeSquareColor(e) {
         e.target.style.backgroundColor = "#" + randomColor;
     } else if (activeColorMode == 'basic') {
         e.target.style.backgroundColor = currentColor;
-     } else if (activeColorMode == 'eraser') {
+    } else if (activeColorMode == 'eraser') {
         e.target.style.backgroundColor = '';
     } else if (activeColorMode == 'opacity') {
         if (e.target.style.backgroundColor == '') {
             e.target.style.backgroundColor = "rgb(230, 230, 230)";
         } else {
+            //split rgb values by color value then reduce each color value by 23
+            //so that any color will reach black by 11 passes of the mouse 
             var rgbColor = e.target.style.backgroundColor;
             let rgbArr = rgbColor.substring(4, rgbColor.length - 1).replace(/ /g, '').split(',');
             e.target.style.backgroundColor = `rgb(${parseInt(rgbArr[0]) - 23}, ${parseInt(rgbArr[1]) - 23}, ${parseInt(rgbArr[2]) - 23})`;
@@ -99,3 +96,7 @@ function resetGrid() {
     const square = document.querySelectorAll('.square');
     square.forEach((el) => { el.style.backgroundColor = '' });
 }
+
+//Load initial conditions on page startup
+makeGrid(8);
+showSize(8);

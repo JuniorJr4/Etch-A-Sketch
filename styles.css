@@ -15,7 +15,6 @@
 .grid-container>div {
   outline: 1px solid rgb(255, 164, 164);
   border-radius: 1px;
-  
 }
 
 .hero {
@@ -39,6 +38,7 @@ button {
   width: 100px;
   transition: 0.3s;
 }
+
 button:hover {
   background-color: darkslategray;
 }
@@ -66,7 +66,7 @@ p {
 }
 
 .slider {
-  accent-color: grey;
+  accent-color: darkslategrey;
 }
 
 .select-color {
